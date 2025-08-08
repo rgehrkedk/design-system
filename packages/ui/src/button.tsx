@@ -1,18 +1,39 @@
 "use client";
 
-import { ReactNode } from "react";
+import { ButtonHTMLAttributes, ReactNode } from "react";
+import styles from "./styles/button.module.css";
 
-interface ButtonProps {
+type ButtonVariant = "primary" | "secondary" | "outline" | "ghost";
+type ButtonSize = "small" | "medium" | "large";
+
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
+  variant?: ButtonVariant;
+  size?: ButtonSize;
+  fullWidth?: boolean;
   className?: string;
-  appName: string;
 }
 
-export const Button = ({ children, className, appName }: ButtonProps) => {
+export const Button = ({ 
+  children, 
+  variant = "primary", 
+  size = "medium",
+  fullWidth = false,
+  className = "",
+  ...props 
+}: ButtonProps) => {
+  const baseClasses = [
+    styles.button,
+    styles[variant],
+    styles[size],
+    fullWidth ? styles.fullWidth : "",
+    className
+  ].filter(Boolean).join(" ");
+
   return (
     <button
-      className={className}
-      onClick={() => alert(`Hello from your ${appName} app!`)}
+      className={baseClasses}
+      {...props}
     >
       {children}
     </button>
