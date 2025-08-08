@@ -1,135 +1,173 @@
-# Turborepo starter
+# Design System
 
-This Turborepo starter is maintained by the Turborepo core team.
+A modern React design system built with Turborepo, featuring CSS modules and Storybook for component documentation and testing.
 
-## Using this example
+## 🚀 Features
 
-Run the following command:
+- **Turborepo Monorepo**: Efficient build system and dependency management
+- **React Components**: Modern React components with TypeScript support
+- **CSS Modules**: Scoped styling with CSS modules for maintainable styles
+- **Storybook**: Interactive component documentation and testing
+- **Remote Access**: Storybook configured for remote localhost testing
 
-```sh
-npx create-turbo@latest
-```
-
-## What's inside?
-
-This Turborepo includes the following packages/apps:
-
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
+## 📦 Project Structure
 
 ```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build
-yarn dlx turbo build
-pnpm exec turbo build
+design-system/
+├── .storybook/          # Storybook configuration
+├── packages/
+│   ├── ui/              # UI components library
+│   │   ├── src/
+│   │   │   ├── button.js       # Button component
+│   │   │   ├── styles/         # CSS modules
+│   │   │   └── stories/        # Storybook stories
+│   │   └── package.json
+│   ├── eslint-config/   # Shared ESLint configuration
+│   └── typescript-config/ # Shared TypeScript configuration
+├── package.json         # Root package.json with workspace config
+└── turbo.json          # Turborepo configuration
 ```
 
-You can build a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
+## 🏃‍♂️ Getting Started
 
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build --filter=docs
+### Prerequisites
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build --filter=docs
-yarn exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
-```
+- Node.js 18+
+- npm
 
-### Develop
+### Installation
 
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev
-yarn exec turbo dev
-pnpm exec turbo dev
+```bash
+# Install dependencies
+npm install
 ```
 
-You can develop a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
+### Development
 
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev --filter=web
+```bash
+# Start Storybook (available on localhost:6006 and remotely on 0.0.0.0:6006)
+npm run storybook
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev --filter=web
-yarn exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
-```
+# Build all packages
+npm run build
 
-### Remote Caching
+# Run linting
+npm run lint
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo login
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo login
-yarn exec turbo login
-pnpm exec turbo login
+# Type checking
+npm run check-types
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+## 🎨 Components
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+### Button Component
 
+A versatile button component with multiple variants, sizes, and states.
+
+**Variants:**
+- `primary` - Blue button for primary actions
+- `secondary` - Gray button for secondary actions  
+- `outline` - Outlined button for subtle actions
+- `ghost` - Transparent button for minimal UI
+
+**Sizes:**
+- `small` - Compact button
+- `medium` - Default size
+- `large` - Prominent button
+
+**Props:**
+- `variant?: 'primary' | 'secondary' | 'outline' | 'ghost'` - Button style variant
+- `size?: 'small' | 'medium' | 'large'` - Button size
+- `fullWidth?: boolean` - Make button full width
+- `disabled?: boolean` - Disable the button
+- `className?: string` - Additional CSS classes
+- `children: ReactNode` - Button content
+
+**Usage:**
+
+```jsx
+import { Button } from '@design-system/ui/button.js';
+
+// Basic usage
+<Button>Click me</Button>
+
+// With variants and sizes
+<Button variant="secondary" size="large">
+  Large Secondary Button
+</Button>
+
+// Full width
+<Button fullWidth>
+  Full Width Button
+</Button>
 ```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo link
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo link
-yarn exec turbo link
-pnpm exec turbo link
+## 🎭 Storybook
+
+The design system includes comprehensive Storybook documentation with:
+
+- Interactive component playground
+- All component variants and states
+- Auto-generated documentation
+- Responsive design testing
+- Accessibility testing
+
+### Remote Access
+
+Storybook is configured to be accessible remotely:
+- Local: `http://localhost:6006`
+- Remote: `http://0.0.0.0:6006`
+
+This allows testing from different devices on the same network.
+
+## 🏗️ Building
+
+```bash
+# Build all packages
+npm run build
+
+# Build Storybook for production
+npm run build-storybook
 ```
 
-## Useful Links
+## 🎯 CSS Modules
 
-Learn more about the power of Turborepo:
+The design system uses CSS modules for component styling:
 
-- [Tasks](https://turborepo.com/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.com/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.com/docs/reference/configuration)
-- [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
+- Scoped styles prevent CSS conflicts
+- Readable class names in development
+- Optimized for production builds
+- Full TypeScript support
+
+Example CSS module structure:
+```css
+.button {
+  /* Base button styles */
+}
+
+.primary {
+  /* Primary variant styles */
+}
+
+.small {
+  /* Small size styles */
+}
+```
+
+## 🚀 Deployment
+
+The Storybook can be deployed to any static hosting service:
+
+1. Build Storybook: `npm run build-storybook`
+2. Deploy the `storybook-static` folder
+
+## 🤝 Contributing
+
+1. Add new components to `packages/ui/src/`
+2. Create corresponding CSS modules in `packages/ui/src/styles/`
+3. Write Storybook stories in `packages/ui/src/stories/`
+4. Update documentation and examples
+
+## 📄 License
+
+This project is licensed under the MIT License.

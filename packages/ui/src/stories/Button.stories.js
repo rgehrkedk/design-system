@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from '../button';
+import { Button } from '../button.js';
+import React from 'react';
 
-const meta: Meta<typeof Button> = {
+const meta = {
   title: 'Components/Button',
   component: Button,
   parameters: {
@@ -27,51 +27,50 @@ const meta: Meta<typeof Button> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
+export const Primary = {
   args: {
     children: 'Button',
     variant: 'primary',
   },
 };
 
-export const Secondary: Story = {
+export const Secondary = {
   args: {
     children: 'Button',
     variant: 'secondary',
   },
 };
 
-export const Outline: Story = {
+export const Outline = {
   args: {
     children: 'Button',
     variant: 'outline',
   },
 };
 
-export const Ghost: Story = {
+export const Ghost = {
   args: {
     children: 'Button',
     variant: 'ghost',
   },
 };
 
-export const Small: Story = {
+export const Small = {
   args: {
     children: 'Button',
     size: 'small',
   },
 };
 
-export const Large: Story = {
+export const Large = {
   args: {
     children: 'Button',
     size: 'large',
   },
 };
 
-export const FullWidth: Story = {
+export const FullWidth = {
   args: {
     children: 'Button',
     fullWidth: true,
@@ -81,34 +80,32 @@ export const FullWidth: Story = {
   },
 };
 
-export const Disabled: Story = {
+export const Disabled = {
   args: {
     children: 'Button',
     disabled: true,
   },
 };
 
-export const AllVariants: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-      <Button variant="primary">Primary</Button>
-      <Button variant="secondary">Secondary</Button>
-      <Button variant="outline">Outline</Button>
-      <Button variant="ghost">Ghost</Button>
-    </div>
+export const AllVariants = {
+  render: () => React.createElement('div', 
+    { style: { display: 'flex', gap: '1rem', flexWrap: 'wrap' } },
+    React.createElement(Button, { variant: 'primary' }, 'Primary'),
+    React.createElement(Button, { variant: 'secondary' }, 'Secondary'),
+    React.createElement(Button, { variant: 'outline' }, 'Outline'),
+    React.createElement(Button, { variant: 'ghost' }, 'Ghost')
   ),
   parameters: {
     layout: 'padded',
   },
 };
 
-export const AllSizes: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-      <Button size="small">Small</Button>
-      <Button size="medium">Medium</Button>
-      <Button size="large">Large</Button>
-    </div>
+export const AllSizes = {
+  render: () => React.createElement('div',
+    { style: { display: 'flex', gap: '1rem', alignItems: 'center' } },
+    React.createElement(Button, { size: 'small' }, 'Small'),
+    React.createElement(Button, { size: 'medium' }, 'Medium'),
+    React.createElement(Button, { size: 'large' }, 'Large')
   ),
   parameters: {
     layout: 'padded',
